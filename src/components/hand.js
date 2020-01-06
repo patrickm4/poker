@@ -64,29 +64,40 @@ const Hand = forwardRef((props, ref) => {
       setDisplayHand(changeSuit)
 
       // TODO add color
+      const changeColor = changeSuit.map(c=>{
+        if(c.color === 0){
+          return {value: c.value, suit: c.suit, color: 'black'}
+        } else if(c.color === 1){
+          return {value: c.value, suit: c.suit, color: 'red'}
+        } else {
+          return
+        }
+      })
+      setDisplayHand(changeColor)
+
     }
     // TODO add holding cards
   }));
 
   return (
     <div className="hand">
-      <div className="card">
+      <div className="card" style={{'color': !displayHand[0].color ? 'black' : displayHand[0].color }}>
         {!displayHand[0].value ? '0' : displayHand[0].value}
         <p>{!displayHand[0].suit ? '0' : displayHand[0].suit}</p>
       </div>
-      <div className="card">
+      <div className="card" style={{'color': !displayHand[1].color ? 'black' : displayHand[1].color }}>
         {!displayHand[1].value ? '0' : displayHand[1].value}
         <p>{!displayHand[1].suit ? '0' : displayHand[1].suit}</p>
       </div>
-      <div className="card">
+      <div className="card" style={{'color': !displayHand[2].color ? 'black' : displayHand[2].color }}>
         {!displayHand[2].value ? '0' : displayHand[2].value}
         <p>{!displayHand[2].suit ? '0' : displayHand[2].suit}</p>
       </div>
-      <div className="card">
+      <div className="card" style={{'color': !displayHand[3].color ? 'black' : displayHand[3].color }}>
         {!displayHand[3].value ? '0' : displayHand[3].value}
         <p>{!displayHand[3].suit ? '0' : displayHand[3].suit}</p>
       </div>
-      <div className="card">
+      <div className="card" style={{'color': !displayHand[4].color ? 'black' : displayHand[4].color }}>
         {!displayHand[4].value ? '0' : displayHand[4].value}
         <p>{!displayHand[4].suit ? '0' : displayHand[4].suit}</p>
       </div>
