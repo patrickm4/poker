@@ -14,7 +14,6 @@ function App() {
       <p>Hands</p>
       <Hand ref={mainHand} />
       <button onClick={() => mainHand.current.doDraw()}>Draw</button>
-      <button onClick={() => mainHand.current.setHand()}>test</button>
     </div>
   );
 }
