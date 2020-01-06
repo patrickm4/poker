@@ -11,27 +11,26 @@ const Hand = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     doDraw() {
-      let card = Math.round(Math.random() * 15);
-      console.log("yeet", card, hand, typeof hand);
-      setHand(hand = []);
-      console.log("yaaw", hand, typeof hand);
-    },
-    setHand() {
-      hand = []
-      console.log("yaas", hand, typeof hand);
+      // console.log("yeet", card, hand, typeof hand);
+      // setHand([card,card,card,card,card]);
+      // console.log("yaaw", hand, typeof JSON.stringify(hand));
+      const diffHand = hand.map(e=>{
+        let card = Math.round(Math.random() * 15);
+        // setHand([card,card,card,card,card]);
+        return e = card
+      })
+      console.log("yaaw", diffHand)
+      setHand(diffHand)
     }
   }));
 
   return (
     <div>
-      {hand}
-      <button
-        onClick={() => {
-          console.log(hand);
-        }}
-      >
-        Check hand array
-      </button>
+      <span className="card">{hand[0]}</span>
+      <span className="card">{hand[1]}</span>
+      <span className="card">{hand[2]}</span>
+      <span className="card">{hand[3]}</span>
+      <span className="card">{hand[4]}</span>
     </div>
   );
 });
