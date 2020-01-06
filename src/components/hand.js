@@ -8,19 +8,18 @@ const Hand = forwardRef((props, ref) => {
   // need to display different ui depending on number
   const [displayHand, setDisplayHand] = useState([0,0,0,0,0])
 
-  const handleDraw = () => {
-    // console.log("yeet");
-  };
-
   useImperativeHandle(ref, () => ({
     doDraw() {
       const diffHand = hand.map(e=>{
+        //TODO need to add suits to the numbers
         let card = Math.round(Math.random() * 13 + 1);
         return e = card
       })
       console.log("yaaw", diffHand)
       setHand(diffHand)
+      //TODO update displayHand UI with new hand
     }
+    // TODO add holding cards
   }));
 
   return (
