@@ -37,9 +37,19 @@
   }
 }
 
+.hand{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .card {
   margin-right:10pt;
   font-size:15pt;
+}
+
+P{
+  margin-block-start:0;
 }
 
 .drawBtn{
