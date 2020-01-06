@@ -13,7 +13,9 @@ function App() {
       <h1>Poker</h1>
       <p>Hands</p>
       <Hand ref={mainHand} />
-      <button onClick={() => mainHand.current.doDraw()}>Draw</button>
+      <button
+        className="drawBtn" 
+        onClick={() => mainHand.current.doDraw()}>Draw</button>
     </div>
   );
 }
