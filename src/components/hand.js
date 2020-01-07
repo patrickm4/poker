@@ -8,6 +8,7 @@ const Hand = forwardRef((props, ref) => {
   // need to display different ui depending on number
   const [displayHand, setDisplayHand] = useState([0,0,0,0,0])
 
+
   useImperativeHandle(ref, () => ({
     doDraw() {
       const diffHand = hand.map(e=>{
@@ -46,7 +47,7 @@ const Hand = forwardRef((props, ref) => {
       })
       setDisplayHand(newHand)
 
-      // TODO add suit
+      // add suit
       const changeSuit = newHand.map(s=>{
         if(s.suit === 1){
           return {value: s.value, suit:'Heart', color: s.color}
@@ -63,7 +64,7 @@ const Hand = forwardRef((props, ref) => {
       })
       setDisplayHand(changeSuit)
 
-      // TODO add color
+      // add color
       const changeColor = changeSuit.map(c=>{
         if(c.color === 0){
           return {value: c.value, suit: c.suit, color: 'black'}
@@ -76,8 +77,13 @@ const Hand = forwardRef((props, ref) => {
       setDisplayHand(changeColor)
 
     }
-    // TODO add holding cards
+
   }));
+
+  // TODO add holding cards
+  const hold = (h, i) =>{
+    console.log("yeetwe", h, i)
+  }
 
   // return (
   //   <div className="hand">
@@ -104,8 +110,12 @@ const Hand = forwardRef((props, ref) => {
   //   </div>
   // );
 
-  return displayHand.map(h=>(
-    <div className="card" style={{'color': h.color}}>
+  return displayHand.map((h, i)=>(
+    <div
+      className="card"
+      style={{'color': h.color}}
+      onClick={()=>{hold(h, i)}}
+      >
       {!h.value ? '0' : h.value }
       <p>{h.suit}</p>
     </div>
