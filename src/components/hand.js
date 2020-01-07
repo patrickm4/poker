@@ -81,6 +81,9 @@ const Hand = forwardRef((props, ref) => {
   }));
 
   // TODO add holding cards
+  // might need to build the randomizer for value, suit and color
+  // find the value by index
+  // change only other indexs
   const hold = (h, i) =>{
     console.log("yeetwe", h, i)
   }
