@@ -1,6 +1,8 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import "../App.css"
 
+// dispaly possible hands on next draw not dependant on held but the overall hand
+
 const Hand = forwardRef((props, ref) => {
   // 0's would mean face down, game has not started
   const [hand, setHand] = useState([0, 0, 0, 0, 0]);
