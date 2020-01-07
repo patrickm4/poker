@@ -12,9 +12,11 @@ function App() {
     <div className="App">
       <h1>Poker</h1>
       <p>Hands</p>
-      <Hand ref={mainHand} />
+      <div className="hand">
+        <Hand ref={mainHand} />
+      </div>
       <button
-        className="drawBtn" 
+        className="drawBtn"
         onClick={() => mainHand.current.doDraw()}>Draw</button>
     </div>
   );
