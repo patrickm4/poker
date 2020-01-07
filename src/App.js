@@ -8,6 +8,8 @@ function App() {
   // build winning
   const mainHand = useRef();
 
+  // TODO add function so user can only draw twice before needed to reset
+
   return (
     <div className="App">
       <h1>Poker</h1>
