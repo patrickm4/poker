@@ -66,13 +66,24 @@ const Hand = forwardRef((props, ref) => {
     setDisplayHand(changeColor)
   }
 
+  const newDraw = () =>{
+    const diffHand = hand.map(e=>{
+      let card = {
+        value: Math.round(Math.random() * 12 + 1),
+        suit: Math.round(Math.random() * 3 + 1),
+        color: Math.round(Math.random() * 1)
+      }
+      return e = card
+    })
+    setHand(diffHand)
+    generate(diffHand)
+  }
+
+  // methods to call from parent
   useImperativeHandle(ref, () => ({
     doDraw() {
       if(held.length > 0){
         const newHand = hand.map((e, i)=>{
-          // held.forEach(y=>{
-          //   if(y)
-          // })
           if(held.indexOf(i) !== -1){
             return {value: e.value, suit:e.suit, color: e.color}
           } else {
@@ -87,20 +98,13 @@ const Hand = forwardRef((props, ref) => {
         console.log("held", held, newHand)
         generate(newHand)
       } else {
-        const diffHand = hand.map(e=>{
-          //TODO add black and red color
-          // let card = Math.round(Math.random() * 12 + 1);
-          let card = {
-            value: Math.round(Math.random() * 12 + 1),
-            suit: Math.round(Math.random() * 3 + 1),
-            color: Math.round(Math.random() * 1)
-          }
-          return e = card
-        })
-        setHand(diffHand)
-        generate(diffHand)
+        newDraw()
       }
+    },
 
+    reDraw() {
+      updateHeld([])
+      newDraw()
     }
 
   }));
