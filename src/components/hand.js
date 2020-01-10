@@ -110,14 +110,17 @@ const Hand = forwardRef((props, ref) => {
   }));
 
   const hold = (h, i) =>{
+    // if user clicks a card already held, need to remove from array
     let newArr = [...held]
     newArr.push(i)
     updateHeld(newArr)
+    console.log("held", held, newArr)
   }
 
   return displayHand.map((h, i)=>(
     <div
       className="card"
+      className={held.includes(i) ? "selected card" : 'card'}
       style={{'color': h.color}}
       onClick={()=>{hold(h, i)}}
       key={i}

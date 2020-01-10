@@ -14,21 +14,18 @@ function App() {
   // TODO add function so user can only draw twice before needed to reset
 
   const handleDraw = () =>{
-    console.log("pre", dNum)
     if(dNum === 1){
       console.log("asd")
       setMainBtn('Reset')
     }
     if(dNum < 2){
-      console.log("yet", dNum)
       mainHand.current.doDraw()
       // dNum += 1
       setDNum(dNum + 1)
     } else {
-      console.log("yaaw", dNum)
       setMainBtn('Draw')
       mainHand.current.reDraw()
-      setDNum(0)
+      setDNum(1)
     }
   }
 
