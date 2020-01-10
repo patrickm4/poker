@@ -95,7 +95,6 @@ const Hand = forwardRef((props, ref) => {
             return card
           }
         })
-        console.log("held", held, newHand)
         generate(newHand)
       } else {
         newDraw()
@@ -111,10 +110,14 @@ const Hand = forwardRef((props, ref) => {
 
   const hold = (h, i) =>{
     // if user clicks a card already held, need to remove from array
-    let newArr = [...held]
-    newArr.push(i)
-    updateHeld(newArr)
-    console.log("held", held, newArr)
+    if(held.includes(i)){
+      let heldArr = held.filter(n => n !== i)
+      updateHeld(heldArr)
+    } else {
+      let newArr = [...held]
+      newArr.push(i)
+      updateHeld(newArr)
+    }
   }
 
   return displayHand.map((h, i)=>(

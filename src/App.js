@@ -15,8 +15,7 @@ function App() {
 
   const handleDraw = () =>{
     if(drawNumber === 1){
-      console.log("asd")
-      setMainBtn('Reset')
+      setMainBtn('Re-draw')
     }
     if(drawNumber < 2){
       mainHand.current.doDraw()
