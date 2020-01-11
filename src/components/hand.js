@@ -64,6 +64,7 @@ const Hand = forwardRef((props, ref) => {
     })
 
     setDisplayHand(changeColor)
+    // props.winOrLose(displayHand)
   }
 
   const newDraw = () =>{
@@ -81,7 +82,7 @@ const Hand = forwardRef((props, ref) => {
 
   // methods to call from parent
   useImperativeHandle(ref, () => ({
-    doDraw() {
+    doDraw(e) {
       if(held.length > 0){
         const newHand = hand.map((e, i)=>{
           if(held.indexOf(i) !== -1){
@@ -96,14 +97,28 @@ const Hand = forwardRef((props, ref) => {
           }
         })
         generate(newHand)
+        // if(props.numberDraw !== 0){
+        //   console.log("yeet1", hand)
+        //   // props.winOrLose(hand)
+        // }
       } else {
+        // need to detect first play when cards are face down
         newDraw()
+        // if(props.numberDraw !== 0){
+        //   console.log("yeet2", hand)
+        //   // props.winOrLose(hand)
+        // }
       }
     },
 
     reDraw() {
+      // TODO need to send final hand up to parent
       updateHeld([])
       newDraw()
+    },
+
+    sendHand() {
+      props.winOrLose(hand)
     }
 
   }));
