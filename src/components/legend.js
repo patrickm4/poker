@@ -43,6 +43,10 @@ const Legend = (props) =>{
   const checkSuit = (hand) =>{
     // 1= Heart, 2=Spade, 3=Club, 4=Diamond
     // console.log("hand", hand)
+    let newArr = hand.map(e => {
+      return e.suit
+    })
+    // flush
   }
   const checkColor = (hand) =>{
     // 0=black, 1=red
