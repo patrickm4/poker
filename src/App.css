@@ -52,6 +52,25 @@
   cursor: pointer;
 }
 
+.cardBeta{
+  width: 160px;
+  height: 320px;
+  padding: 20px;
+  font-size:15pt;
+  border: 1px solid black;
+  border-radius:5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-top{
+  text-align: left;
+}
+.card-bottom{
+  text-align: right;
+}
+
 P{
   margin-block-start:0;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Hand from "./components/hand";
 import Legend from "./components/legend"
+import Card from "./components/card"
 import "./App.css";
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
       </div>
       <DrawButton />
       <ResultLog />
+      <Card />
     </div>
   );
 }
