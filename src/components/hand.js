@@ -96,28 +96,20 @@ const Hand = forwardRef((props, ref) => {
             return card
           }
         })
+        setHand(newHand)
         generate(newHand)
-        // if(props.numberDraw !== 0){
-        //   console.log("yeet1", hand)
-        //   // props.winOrLose(hand)
-        // }
       } else {
-        // need to detect first play when cards are face down
         newDraw()
-        // if(props.numberDraw !== 0){
-        //   console.log("yeet2", hand)
-        //   // props.winOrLose(hand)
-        // }
       }
     },
 
     reDraw() {
-      // TODO need to send final hand up to parent
       updateHeld([])
       newDraw()
     },
 
     sendHand() {
+      console.log("hand", hand)
       props.winOrLose(hand)
     }
 

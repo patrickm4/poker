@@ -21,13 +21,14 @@ const Legend = (props) =>{
   // Jacks or better
 
   const checkNumber = () =>{
-    // console.log("hand", hand)
+    // 11=J, 12=Q, 13=K, 1=A
   }
   const checkSuit = () =>{
+    // 1= Heart, 2=Spade, 3=Club, 4=Diamond
     // console.log("hand", hand)
   }
   const checkColor = () =>{
-    // console.log("hand", hand)
+    // 0=black, 1=red
   }
 
   useEffect(()=>{

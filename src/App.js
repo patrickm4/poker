@@ -18,7 +18,7 @@ function App() {
   const handleDraw = () =>{
     if(drawNumber === 1){
       setMainBtn('Re-draw')
-      setTimeout(()=>{mainHand.current.sendHand()}, 1)
+      setTimeout(()=>{mainHand.current.sendHand()}, 10)
     }
     if(drawNumber < 2){
       mainHand.current.doDraw(drawNumber)
