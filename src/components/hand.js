@@ -11,6 +11,8 @@ const Hand = forwardRef((props, ref) => {
   const [displayHand, setDisplayHand] = useState([0,0,0,0,0])
 
   const generate = (diffArr) => {
+    //clubs and spade can only be black and hearts and diamonds red
+
     // add face cards and ace
     const newHand = diffArr.map(f=>{
       if(f.value === 11){
