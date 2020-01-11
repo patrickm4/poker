@@ -11,7 +11,6 @@ const Hand = forwardRef((props, ref) => {
   const [displayHand, setDisplayHand] = useState([0,0,0,0,0])
 
   const generate = (diffArr) => {
-    //clubs and spade can only be black and hearts and diamonds red
 
     // add face cards and ace
     const newHand = diffArr.map(f=>{
@@ -40,32 +39,32 @@ const Hand = forwardRef((props, ref) => {
     // add suit
     const changeSuit = newHand.map(s=>{
       if(s.suit === 1){
-        return {value: s.value, suit:'Heart', color: s.color}
+        return {value: s.value, suit:'Heart', color: 'red'}
       } else if(s.suit === 2){
-        return {value: s.value, suit:'Spade', color: s.color}
+        return {value: s.value, suit:'Spade', color: 'black'}
       } else if(s.suit === 3){
-        return {value: s.value, suit:'Club', color: s.color}
+        return {value: s.value, suit:'Club', color: 'black'}
       } else if(s.suit === 4){
-        return {value: s.value, suit:'Diamond', color: s.color}
+        return {value: s.value, suit:'Diamond', color: 'red'}
       } else {
         //should never happen
         return {value: s.value, suit:s.suit, color: s.color}
       }
     })
-    // setDisplayHand(changeSuit)
+    setDisplayHand(changeSuit)
 
     // add color
-    const changeColor = changeSuit.map(c=>{
-      if(c.color === 0){
-        return {value: c.value, suit: c.suit, color: 'black'}
-      } else if(c.color === 1){
-        return {value: c.value, suit: c.suit, color: 'red'}
-      } else {
-        return
-      }
-    })
+    // const changeColor = changeSuit.map(c=>{
+    //   if(c.color === 0){
+    //     return {value: c.value, suit: c.suit, color: 'black'}
+    //   } else if(c.color === 1){
+    //     return {value: c.value, suit: c.suit, color: 'red'}
+    //   } else {
+    //     return
+    //   }
+    // })
 
-    setDisplayHand(changeColor)
+    // setDisplayHand(changeColor)
     // props.winOrLose(displayHand)
   }
 
@@ -73,8 +72,8 @@ const Hand = forwardRef((props, ref) => {
     const diffHand = hand.map(e=>{
       let card = {
         value: Math.round(Math.random() * 12 + 1),
-        suit: Math.round(Math.random() * 3 + 1),
-        color: Math.round(Math.random() * 1)
+        suit: Math.round(Math.random() * 3 + 1)
+        // color: Math.round(Math.random() * 1)
       }
       return e = card
     })
