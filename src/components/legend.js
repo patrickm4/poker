@@ -20,6 +20,10 @@ const Legend = (props) =>{
   // Two Pair
   // Jacks or better
 
+  const compareNum = (a, b) =>{
+    return a - b
+  }
+
   const checkNumber = (hand) =>{
     // 11=J, 12=Q, 13=K, 1=A
     // console.log("yeeeeeet", hand)
@@ -31,7 +35,22 @@ const Legend = (props) =>{
       let newArr = hand.map(e => {
         return e.value
       })
-      console.log("yeeeet", newArr)
+      newArr.sort(compareNum)
+      let same = 0
+      for(var i=0; i < newArr.length; i++){
+        console.log(newArr[i])
+        if(newArr[i] === newArr[i+1]){
+          same ++
+          console.log("yeet", newArr[i])
+        }
+      }
+      if(same === 1){
+        console.log("two of a kind")
+      } else if (same === 2){
+        console.log("three of a kind")
+      }
+      // doesnt work if there are two sets of two of a kind, console logs 'three of a kind'
+
       // newArr.filter(n => {
       //   return
       // })
