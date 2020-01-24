@@ -110,7 +110,7 @@ const Hand = forwardRef((props, ref) => {
     },
 
     sendHand() {
-      console.log("hand", hand)
+      // console.log("hand", hand)
       props.winOrLose(hand)
     }
 
