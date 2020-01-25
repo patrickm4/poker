@@ -117,8 +117,8 @@ const Legend = (props) =>{
       })
 
       //straight
-      //2 methods
       let bucketCount = 0
+      let tenToAce = false
       buckets.forEach(n=>{
         if(bucketCount !== 5){
           n.bucket > 0 ? bucketCount++ : bucketCount = 0
@@ -126,7 +126,9 @@ const Legend = (props) =>{
       })
       //need check for 10 to ace
       if(buckets[9].bucket > 0 && buckets[10].bucket > 0 && buckets[11].bucket > 0, buckets[12].bucket > 0 && buckets[0].bucket > 0){
+        tenToAce = true
         bucketCount = 5
+
       }
       if(bucketCount === 5){
         setResult('Straight!')
@@ -168,12 +170,16 @@ const Legend = (props) =>{
         setResult('Straight Flush!')
       }
 
+      //TODO if playing wild card, royal flush w/ wild is lower
+
       //five of a kind
       buckets.forEach(p =>{
         if(p.bucket === 5){
           setResult('Five of a kind!')
         }
       })
+
+      //TODO if no wild card, royal flush higher
 
       // let endHand = {}
       // newArr.forEach((num, i)=>{
