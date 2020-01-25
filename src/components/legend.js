@@ -104,8 +104,8 @@ const Legend = (props) =>{
 
       //two of a kind
       buckets.forEach(p =>{
-        if(p.bucket === 3){
-          setResult('Three of a kind!')
+        if(p.bucket === 2){
+          setResult('Two of a kind!')
         }
       })
 
@@ -115,6 +115,31 @@ const Legend = (props) =>{
           setResult('Three of a kind!')
         }
       })
+
+      //straight
+      //2 methods
+      let bucketCount = 0
+      buckets.forEach(n=>{
+        if(bucketCount !== 5){
+          n.bucket > 0 ? bucketCount++ : bucketCount = 0
+        }
+      })
+      //need check for 10 to ace
+      if(buckets[9].bucket > 0 && buckets[10].bucket > 0 && buckets[11].bucket > 0, buckets[12].bucket > 0 && buckets[0].bucket > 0){
+        bucketCount = 5
+      }
+      if(bucketCount === 5){
+        setResult('Straight!')
+      }
+
+      //flush
+      let isFlush = checkSuit(hand)
+      if(isFlush === 'flush'){
+        //return early in case of straight flush
+        return setResult('Flush1')
+      } else if(bucketCount === 5){
+        setResult('Straight!')
+      }
 
       //fullhouse
       let filterArr = buckets.filter(d => {
@@ -138,6 +163,11 @@ const Legend = (props) =>{
           setResult('Four of a kind!')
         }
       })
+
+      if(isFlush === 'flush' && bucketCount === 5){
+        setResult('Straight Flush!')
+      }
+
       //five of a kind
       buckets.forEach(p =>{
         if(p.bucket === 5){
@@ -186,7 +216,10 @@ const Legend = (props) =>{
     })
 
     if(isFlushOrNaw){
-      setResult('Flush1')
+      // setResult('Flush1')
+      return 'flush'
+    } else {
+      return 'naw'
     }
   }
 
@@ -195,7 +228,6 @@ const Legend = (props) =>{
     //compare the hadns here and show result
     const hand = props.hand
     checkNumber(hand)
-    checkSuit(hand)
     // checkColor(hand)
     // if(result === ''){
     //   // console.log("res", result)
