@@ -3,8 +3,7 @@ import "../App.css"
 
 const Legend = (props) =>{
   const [result, setResult] = useState('')
-  // write winning hands
-  // code where we can include wild card or not
+  // TODO code where we can include wild card or not
 
   // Royal flush
   // straight flush
@@ -118,7 +117,7 @@ const Legend = (props) =>{
 
       //straight
       let bucketCount = 0
-      let tenToAce = false
+      let royal = false
       buckets.forEach(n=>{
         if(bucketCount !== 5){
           n.bucket > 0 ? bucketCount++ : bucketCount = 0
@@ -126,7 +125,7 @@ const Legend = (props) =>{
       })
       //need check for 10 to ace
       if(buckets[9].bucket > 0 && buckets[10].bucket > 0 && buckets[11].bucket > 0, buckets[12].bucket > 0 && buckets[0].bucket > 0){
-        tenToAce = true
+        royal = true
         bucketCount = 5
 
       }
@@ -136,9 +135,9 @@ const Legend = (props) =>{
 
       //flush
       let isFlush = checkSuit(hand)
-      if(isFlush === 'flush'){
+      if(isFlush){
         //return early in case of straight flush
-        return setResult('Flush1')
+        return setResult('Flush!')
       } else if(bucketCount === 5){
         setResult('Straight!')
       }
@@ -179,7 +178,10 @@ const Legend = (props) =>{
         }
       })
 
-      //TODO if no wild card, royal flush higher
+      //royal flush
+      if(royal && isFlush){
+        setResult('Royal Flush!')
+      }
 
       // let endHand = {}
       // newArr.forEach((num, i)=>{
@@ -222,10 +224,9 @@ const Legend = (props) =>{
     })
 
     if(isFlushOrNaw){
-      // setResult('Flush1')
-      return 'flush'
+      return true
     } else {
-      return 'naw'
+      return false
     }
   }
 
