@@ -24,19 +24,13 @@ const Legend = (props) =>{
   }
 
   const checkNumber = (hand) =>{
-    // 11=J, 12=Q, 13=K, 1=A
-    // console.log("yeeeeeet", hand)
     if(hand.length > 0){
-
-      // for(let [k, v] of hand.value[0]){
-      //     console.log("p", k, v)
-      // }
       let newArr = hand.map(e => {
         return e.value
       })
       newArr.sort(compareNum)
-      console.log("cn", newArr)
 
+      // 11=J, 12=Q, 13=K, 1=A
       let buckets = [
         {
           bucketName: 1,
@@ -117,12 +111,12 @@ const Legend = (props) =>{
 
       //straight
       let bucketCount = 0
-      let royal = false
       buckets.forEach(n=>{
         if(bucketCount !== 5){
           n.bucket > 0 ? bucketCount++ : bucketCount = 0
         }
       })
+      let royal = false
       //need check for 10 to ace
       if(buckets[9].bucket > 0 && buckets[10].bucket > 0 && buckets[11].bucket > 0, buckets[12].bucket > 0 && buckets[0].bucket > 0){
         royal = true
@@ -182,35 +176,6 @@ const Legend = (props) =>{
       if(royal && isFlush){
         setResult('Royal Flush!')
       }
-
-      // let endHand = {}
-      // newArr.forEach((num, i)=>{
-      //   var tempStr = num
-      //   endHand.tempStr = num
-      // })
-      // console.log("endHand", endHand)
-
-      // let same = 0
-      // for(var i=0; i < newArr.length; i++){
-      //   console.log(newArr[i])
-      //   if(newArr[i] === newArr[i+1]){
-      //     same ++
-      //     console.log("yeet", newArr[i])
-      //   }
-      // }
-      // if(same === 1){
-      //   console.log("two of a kind")
-      // } else if (same === 2){
-      //   console.log("three of a kind")
-      // }
-      // doesnt work if there are two sets of two of a kind, console logs 'three of a kind'
-
-      // newArr.filter(n => {
-      //   return
-      // })
-      // newArr.forEach(e => {
-      //   if(newArr)
-      // })
     }
   }
   const checkSuit = (hand) =>{

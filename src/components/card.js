@@ -2,9 +2,9 @@ import React from "react";
 
 const Card = () => {
 
-  const CardTop = () => {
+  const Corner = () => {
     return <div
-        className="card-top"
+        className="corner"
       >
       A
       </div>
@@ -13,15 +13,15 @@ const Card = () => {
   return <div
       className="cardBeta"
     >
-      <CardTop />
+      <Corner
+        style={{ textAlign: 'left' }}
+      />
       <div>
         Spade
       </div>
-      <div
-        className="card-bottom"
-        >
-        A
-      </div>
+      <Corner
+        style={{ textAlign: 'right' }}
+      />
     </div>
 }
 
