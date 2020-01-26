@@ -14,7 +14,7 @@ const Card = props => {
       >
       {props.cardNum ? props.cardNum : 0 }
       <div
-        style={{ height: '20px', width: '40px' }}
+        style={{ width: '40px', marginTop: '-25px' }}
         >
         <Suit />
       </div>

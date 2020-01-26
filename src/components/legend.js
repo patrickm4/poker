@@ -118,12 +118,12 @@ const Legend = (props) =>{
       })
       let royal = false
       //need check for 10 to ace
-      if(buckets[9].bucket > 0 && buckets[10].bucket > 0 && buckets[11].bucket > 0, buckets[12].bucket > 0 && buckets[0].bucket > 0){
+      if(buckets[9].bucket > 0 && buckets[10].bucket > 0 && buckets[11].bucket > 0 && buckets[12].bucket > 0 && buckets[0].bucket > 0){
         royal = true
         bucketCount = 5
-
       }
       if(bucketCount === 5){
+        console.log("bucket Count", bucketCount)
         setResult('Straight!')
       }
 
