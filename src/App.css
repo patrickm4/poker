@@ -91,3 +91,14 @@ P{
 .doneDraw{
   pointer-events: none;
 }
+
+.corner-num{
+  font-size: 44pt;
+}
+.results{
+  font-size: 35pt;
+  /* position: absolute;
+  top: 40px;
+  left: 50%;
+  background-color: aquamarine; */
+}

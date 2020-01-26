@@ -1,27 +1,67 @@
 import React from "react";
+import { ReactComponent as Clubs} from "../imgs/clubs.svg"
+import { ReactComponent as Diamonds} from "../imgs/diamond.svg"
+import { ReactComponent as Hearts} from "../imgs/heart.svg"
+import { ReactComponent as Spades} from "../imgs/spade.svg"
 
-const Card = () => {
+const Card = props => {
+  console.log("props card", props)
 
-  const Corner = () => {
+  const CardTop = () => {
     return <div
-        className="corner"
+        className="card-top corner-num"
+        style={{ 'color': props.color }}
       >
-      A
+      {props.cardNum ? props.cardNum : 0 }
+      <div
+        style={{ height: '20px', width: '40px' }}
+        >
+        <Suit />
+      </div>
+      </div>
+  }
+  const CardBottom = () => {
+    return <div
+        className="card-bottom corner-num"
+        style={{ 'color': props.color }}
+      >
+      <div
+        style={{ height: '20px', width: '40px' }}
+        >
+        <Suit />
+      </div>
+      {props.cardNum ? props.cardNum : 0 }
       </div>
   }
 
+  const Suit = () => {
+    // return props.suit ? props.suit : 'OO'
+    if(props.suit){
+      if(props.suit === 'Diamond'){
+        return <Diamonds />
+      }
+      if(props.suit === 'Heart'){
+        return <Hearts />
+      }
+      if(props.suit === 'Spade'){
+        return <Spades />
+      }
+      if(props.suit === 'Club'){
+        return <Clubs />
+      }
+    } else {
+      return ''
+    }
+  }
+
   return <div
-      className="cardBeta"
+      className={"cardBeta" + ( props.className === 'selected card' ? ' selected' : '')}
     >
-      <Corner
-        style={{ textAlign: 'left' }}
-      />
+      <CardTop />
       <div>
-        Spade
+        <Suit />
       </div>
-      <Corner
-        style={{ textAlign: 'right' }}
-      />
+
     </div>
 }
 

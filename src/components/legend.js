@@ -207,7 +207,9 @@ const Legend = (props) =>{
     // }
   }, [])
 
-  return <div>{result}</div>
+  return <div
+      className="results"
+    >{result}</div>
 }
 
 export default Legend;

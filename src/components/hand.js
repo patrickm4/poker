@@ -1,5 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import "../App.css"
+import Card from "./card"
 
 // dispaly possible hands on next draw not dependant on held but the overall hand
 
@@ -117,6 +118,7 @@ const Hand = forwardRef((props, ref) => {
   }));
 
   const hold = (h, i) =>{
+    console.log("yeet")
     // if user clicks a card already held, need to remove from array
     if(held.includes(i)){
       let heldArr = held.filter(n => n !== i)
@@ -128,16 +130,30 @@ const Hand = forwardRef((props, ref) => {
     }
   }
 
+  // return displayHand.map((h, i)=>(
+  //   <div
+  //     className="card"
+  //     className={held.includes(i) ? "selected card" : 'card'}
+  //     style={{'color': h.color}}
+  //     onClick={()=>{hold(h, i)}}
+  //     key={i}
+  //     >
+  //     {!h.value ? '0' : h.value }
+  //     <p>{h.suit}</p>
+  //   </div>
+  // ))
+
   return displayHand.map((h, i)=>(
     <div
-      className="card"
-      className={held.includes(i) ? "selected card" : 'card'}
-      style={{'color': h.color}}
       onClick={()=>{hold(h, i)}}
-      key={i}
       >
-      {!h.value ? '0' : h.value }
-      <p>{h.suit}</p>
+    <Card
+      className={held.includes(i) ? "selected card" : 'card'}
+      cardNum={h.value}
+      suit={h.suit}
+      color={h.color}
+      key={i}
+      />
     </div>
   ))
 
