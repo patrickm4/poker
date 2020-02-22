@@ -98,14 +98,18 @@ const Legend = (props) =>{
       //two of a kind
       buckets.forEach(p =>{
         if(p.bucket === 2){
+          console.log("2 kind")
           setResult('Two of a kind!')
+          props.setBet(5)
         }
       })
 
       //three of a kind
       buckets.forEach(p =>{
         if(p.bucket === 3){
+          console.log("3 kind")
           setResult('Three of a kind!')
+          props.setBet(10)
         }
       })
 

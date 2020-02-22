@@ -5,7 +5,7 @@ import { ReactComponent as Hearts} from "../imgs/heart.svg"
 import { ReactComponent as Spades} from "../imgs/spade.svg"
 
 const Card = props => {
-  console.log("props card", props)
+  // console.log("props card", props)
 
   const CardTop = () => {
     return <div

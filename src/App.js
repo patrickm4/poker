@@ -10,6 +10,7 @@ function App() {
   // build winning
   // let drawNumber = 0
   const [drawNumber, setdrawNumber] = useState(0)
+  const [credit, setCredit] = useState(0)
   const mainHand = useRef();
   const [mainBtn, setMainBtn] = useState('Draw')
   const [finalHand, setFinalHand] = useState([])
@@ -19,6 +20,7 @@ function App() {
   const handleDraw = () =>{
     if(drawNumber === 1){
       setMainBtn('Re-draw')
+      setCredit(0)
       setTimeout(()=>{mainHand.current.sendHand()}, 10)
     }
     if(drawNumber < 2){
@@ -30,6 +32,7 @@ function App() {
       mainHand.current.reDraw()
       setdrawNumber(1)
     }
+
   }
 
   const DrawButton = () => {
@@ -41,22 +44,29 @@ function App() {
 
   const ResultLog = () =>{
     if(drawNumber === 2){
-      return <Legend hand={finalHand} />
+      return <Legend hand={finalHand} setBet={c => setCredit(c)} />
     } else {
       return null
     }
+  }
+
+  const Credit = () => {
+    return <div className="creditNum">{credit}</div>
   }
 
   return (
     <div className="App">
       <h1>Poker Deuces Wild</h1>
       <div className={ drawNumber === 2 ? "hand doneDraw" : "hand" }>
-        <Hand ref={mainHand} winOrLose={p => setFinalHand(p)}
-        numberDraw={drawNumber}
+        <Hand
+          ref={mainHand}
+          winOrLose={p => setFinalHand(p)}
+          numberDraw={drawNumber}
            />
       </div>
       <DrawButton />
       <ResultLog />
+      <Credit />
     </div>
   );
 }

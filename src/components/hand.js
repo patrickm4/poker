@@ -118,7 +118,7 @@ const Hand = forwardRef((props, ref) => {
   }));
 
   const hold = (h, i) =>{
-    console.log("yeet")
+    // console.log("yeet")
     // if user clicks a card already held, need to remove from array
     if(held.includes(i)){
       let heldArr = held.filter(n => n !== i)
@@ -145,6 +145,7 @@ const Hand = forwardRef((props, ref) => {
 
   return displayHand.map((h, i)=>(
     <div
+      key={i}
       onClick={()=>{hold(h, i)}}
       >
     <Card
