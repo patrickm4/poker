@@ -6,6 +6,7 @@ import BetBtns from "./components/bets"
 import "./App.css";
 
 function App() {
+  // TODO should not be able to hold "0" cards
   // build cards (number and suit)
   // build hands 5 or 3
   // build winning
