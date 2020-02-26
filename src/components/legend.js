@@ -100,7 +100,7 @@ const Legend = (props) =>{
         if(p.bucket === 2){
           console.log("2 kind")
           setResult('Two of a kind!')
-          props.setBet(5)
+          props.determine("2 kind")
         }
       })
 
@@ -109,7 +109,7 @@ const Legend = (props) =>{
         if(p.bucket === 3){
           console.log("3 kind")
           setResult('Three of a kind!')
-          props.setBet(10)
+          props.determine("3 kind")
         }
       })
 

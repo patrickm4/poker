@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Hand from "./components/hand";
 import Legend from "./components/legend"
 import Card from "./components/card"
+import BetBtns from "./components/bets"
 import "./App.css";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   // let drawNumber = 0
   const [drawNumber, setdrawNumber] = useState(0)
   const [credit, setCredit] = useState(0)
+  const [bet, setBet] = useState(0)
   const mainHand = useRef();
   const [mainBtn, setMainBtn] = useState('Draw')
   const [finalHand, setFinalHand] = useState([])
@@ -42,9 +44,18 @@ function App() {
             </button>
   }
 
+  const addCredit = (type) => {
+    console.log("type", type)
+  }
+
+  const betCredit = () => {
+    // TODO get bets, reduce from credit
+  }
+
   const ResultLog = () =>{
     if(drawNumber === 2){
-      return <Legend hand={finalHand} setBet={c => setCredit(c)} />
+      return <Legend hand={finalHand} determine={t => addCredit(t)} />
+      // return <Legend hand={finalHand} setBet={c => setCredit(credit + c)} />
     } else {
       return null
     }
@@ -66,7 +77,13 @@ function App() {
       </div>
       <DrawButton />
       <ResultLog />
-      <Credit />
+      <div
+        className="bottom-bar"
+        >
+        <BetBtns addBet={c => setBet(bet + c)}/>
+        <div class="bet-number">{bet}</div>
+        <Credit />
+      </div>
     </div>
   );
 }

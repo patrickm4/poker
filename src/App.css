@@ -103,9 +103,17 @@ P{
   background-color: aquamarine; */
 }
 
-.creditNum{
-  position: fixed;
+.creditNum, .bet-number{
+  /* position: fixed;
   bottom: 150px;
-  right: 100px;
+  right: 100px; */
   font-size:24pt;
+}
+
+.bottom-bar{
+  position: fixed;
+  bottom: 20px;
+  width:100vw;
+  display: flex;
+  justify-content: space-around;
 }
