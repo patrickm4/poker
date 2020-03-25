@@ -100,7 +100,7 @@ const Legend = (props) =>{
         if(p.bucket === 2){
           console.log("2 kind")
           setResult('Two of a kind!')
-          props.determine("2 kind")
+          props.determine("2kind")
         }
       })
 
@@ -109,7 +109,7 @@ const Legend = (props) =>{
         if(p.bucket === 3){
           console.log("3 kind")
           setResult('Three of a kind!')
-          props.determine("3 kind")
+          props.determine("3kind")
         }
       })
 
@@ -200,7 +200,7 @@ const Legend = (props) =>{
   }
 
   useEffect(()=>{
-    // console.log("wooop")
+    console.log("legend useEffect")
     //compare the hadns here and show result
     const hand = props.hand
     checkNumber(hand)
@@ -209,7 +209,7 @@ const Legend = (props) =>{
     //   // console.log("res", result)
     //   // setResult('Lose')
     // }
-  }, [])
+  }, [result])
 
   return <div
       className="results"

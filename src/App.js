@@ -12,11 +12,12 @@ function App() {
   // build winning
   // let drawNumber = 0
   const [drawNumber, setdrawNumber] = useState(0)
-  const [credit, setCredit] = useState(0)
+  const [credit, setCredit] = useState(100)
   const [bet, setBet] = useState(0)
   const mainHand = useRef();
   const [mainBtn, setMainBtn] = useState('Draw')
   const [finalHand, setFinalHand] = useState([])
+  const [isDecided, setFinal] = useState('')
 
   // TODO add function so user can only draw twice before needed to reset
 
@@ -39,6 +40,7 @@ function App() {
   }
 
   const DrawButton = () => {
+    setFinal(false)
     return <button
               className="drawBtn"
               onClick={() => {handleDraw()}}>{mainBtn}
@@ -46,16 +48,36 @@ function App() {
   }
 
   const addCredit = (type) => {
-    console.log("type", type)
+    // make sure the legend is only called once
+    // if(!isDecided){
+    //   if(type === '2kind'){
+    //     console.log("type", type)
+    //   }
+    //   setFin0al(true)
+    // }
+    if(!isDecided){
+      console.log("type", type)
+      setFinal(true)
+    }
   }
 
-  const betCredit = () => {
+  const betCredit = (b) => {
     // TODO get bets, reduce from credit
+
+
+    // dont take more than they have
+    if(b > credit){
+      console.log("No more monies")
+    } else {
+      setBet(bet + b)
+      setCredit(credit - b)
+      console.log("yeeet", b, credit, bet)
+    }
   }
 
   const ResultLog = () =>{
     if(drawNumber === 2){
-      return <Legend hand={finalHand} determine={t => addCredit(t)} />
+      return <Legend isAlreadyDecided={isDecided} hand={finalHand} determine={t => addCredit(t)} />
       // return <Legend hand={finalHand} setBet={c => setCredit(credit + c)} />
     } else {
       return null
@@ -81,8 +103,8 @@ function App() {
       <div
         className="bottom-bar"
         >
-        <BetBtns addBet={c => setBet(bet + c)}/>
-        <div class="bet-number">{bet}</div>
+        <BetBtns addBet={c => betCredit(c)}/>
+        <div className="bet-number">{bet}</div>
         <Credit />
       </div>
     </div>
