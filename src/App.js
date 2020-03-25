@@ -57,7 +57,8 @@ function App() {
     // }
     if(!isDecided){
       console.log("type", type)
-      setFinal(true)
+      // below creates endless loop
+      // setFinal(true)
     }
   }
 
